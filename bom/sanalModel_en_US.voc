@@ -1,0 +1,9 @@
+# Vocabulary Properties
+uuid = 610b7b22-d57e-4762-958c-6824c88b2c44
+
+# musteriSeviyesiDomain
+musteriSeviyesiDomain#concept.label = musteriSeviyesiDomain
+musteriSeviyesiDomain.BRONZ#instance.label = BRONZ
+musteriSeviyesiDomain.GOLD#instance.label = GOLD
+musteriSeviyesiDomain.PLATINIUM#instance.label = PLATINIUM
+musteriSeviyesiDomain.SILVER#instance.label = SILVER

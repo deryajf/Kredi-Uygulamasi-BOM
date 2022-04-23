@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.ruleflow:RuleFlow xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.ruleflow="http://ilog.rules.studio/model/ruleflow.ecore">
+  <name>KrediAkisi</name>
+  <uuid>1f021632-f9a8-4151-8c20-6caeb5f77b30</uuid>
+  <locale>en_US</locale>
+  <categories>any</categories>
+  <rfModel>
+<Ruleflow xmlns="http://schemas.ilog.com/Rules/7.0/Ruleflow">
+  <Body>
+    <TaskList>
+      <StartTask Identifier="task_4">
+        <Actions Language="irl"><![CDATA[	krediResponse = new KrediResponse();]]></Actions>
+      </StartTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="Hesaplama Paketi" Ordering="Default">
+        <RuleList>
+          <Package Name="Hesaplama Paketi"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="Maas Skor Hesaplama Paketi" Ordering="Default">
+        <RuleList>
+          <Package Name="Maas Skor Hesaplama Paketi"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="Skor Onay Paketi" Ordering="Default">
+        <RuleList>
+          <Package Name="Skor Onay Paketi"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="Harcama Onayı" Ordering="Default">
+        <RuleList>
+          <Package Name="Harcama Onayı"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="Yas Kontrolü" Ordering="Default">
+        <RuleList>
+          <Package Name="Yas Kontrolü"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="musteriSeviyesiPaketi" Ordering="Default">
+        <RuleList>
+          <Package Name="musteriSeviyesiPaketi"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="krediTalepKontrolu" Ordering="Default">
+        <InitialActions Language="irl"><![CDATA[System.out.println("Score" + krediRequest.musteriBilgileri.krediSkoru);]]>&#13;<![CDATA[
+System.out.println("Seviye" + krediResponse.musteriSeviyesi);]]></InitialActions>
+        <RuleList>
+          <Package Name="krediTalepKontrolu"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="vadeKatsayisiPaketi" Ordering="Default">
+        <RuleList>
+          <Package Name="vadeKatsayisiPaketi"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="toplamOdenecekTutarPaketi" Ordering="Default">
+        <RuleList>
+          <Package Name="toplamOdenecekTutarPaketi"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="vadeLimitiKontrolPaketi" Ordering="Default">
+        <RuleList>
+          <Package Name="vadeLimitiKontrolPaketi"/>
+        </RuleList>
+      </RuleTask>
+      <SubflowTask Identifier="task_0" Uuid="d0179b71-fcc9-43f8-85d1-21caab658917"/>
+      <StopTask Identifier="task_9"/>
+    </TaskList>
+    <NodeList>
+      <TaskNode Identifier="node_3" Task="Hesaplama Paketi"/>
+      <TaskNode Identifier="node_4" Task="task_4"/>
+      <TaskNode Identifier="node_5" Task="Maas Skor Hesaplama Paketi"/>
+      <TaskNode Identifier="node_6" Task="Skor Onay Paketi"/>
+      <TaskNode Identifier="node_7" Task="Harcama Onayı"/>
+      <TaskNode Identifier="node_8" Task="Yas Kontrolü"/>
+      <TaskNode Identifier="node_9" Task="task_9"/>
+      <BranchNode Identifier="node_0"/>
+      <TaskNode Identifier="node_1" Task="musteriSeviyesiPaketi"/>
+      <TaskNode Identifier="node_2" Task="krediTalepKontrolu"/>
+      <TaskNode Identifier="node_10" Task="vadeKatsayisiPaketi"/>
+      <TaskNode Identifier="node_11" Task="toplamOdenecekTutarPaketi"/>
+      <BranchNode Identifier="node_12"/>
+      <TaskNode Identifier="node_13" Task="vadeLimitiKontrolPaketi"/>
+      <TaskNode Identifier="node_14" Task="task_0"/>
+      <BranchNode Identifier="node_15"/>
+    </NodeList>
+    <TransitionList>
+      <Transition Identifier="transition_1" Source="node_4" Target="node_0"/>
+      <Transition Identifier="transition_2" Source="node_3" Target="node_5"/>
+      <Transition Identifier="transition_0" Source="node_0" Target="node_3"/>
+      <Transition Identifier="transition_6" Source="node_0" Target="node_8">
+        <Conditions Language="bal"><![CDATA[the yas of the musteri bilgileri of krediRequest is less than 18 and krediRequest is kart talebi var mi is false ]]></Conditions>
+      </Transition>
+      <Transition Identifier="transition_7" Source="node_8" Target="node_9"/>
+      <Transition Identifier="transition_9" Source="node_5" Target="node_1"/>
+      <Transition Identifier="transition_10" Source="node_6" Target="node_2"/>
+      <Transition Identifier="transition_11" Source="node_2" Target="node_7"/>
+      <Transition Identifier="transition_12" Source="node_10" Target="node_11"/>
+      <Transition Identifier="transition_13" Source="node_11" Target="node_9"/>
+      <Transition Identifier="transition_14" Source="node_7" Target="node_12"/>
+      <Transition Identifier="transition_15" Source="node_12" Target="node_10"/>
+      <Transition Identifier="transition_17" Source="node_12" Target="node_13">
+        <Conditions Language="bal"><![CDATA[the musteri vade talebi of the musteri bilgileri of krediRequest is more than 60  ]]></Conditions>
+      </Transition>
+      <Transition Identifier="transition_18" Source="node_13" Target="node_9"/>
+      <Transition Identifier="transition_4" Source="node_1" Target="node_15"/>
+      <Transition Identifier="transition_20" Source="node_15" Target="node_6"/>
+      <Transition Identifier="transition_21" Source="node_15" Target="node_14">
+        <Conditions Language="bal"><![CDATA[krediRequest is kart talebi var mi is true ]]></Conditions>
+      </Transition>
+      <Transition Identifier="transition_22" Source="node_14" Target="node_9"/>
+    </TransitionList>
+  </Body>
+  <Resources>
+    <ResourceSet Locale="en_US">
+      <Data Name="node_4#width">21.0</Data>
+      <Data Name="node_2#height">40.0</Data>
+      <Data Name="transition_17#label">Vade Kontrol</Data>
+      <Data Name="node_3#height">53.402344</Data>
+      <Data Name="node_1#height">40.0</Data>
+      <Data Name="node_4#height">21.0</Data>
+      <Data Name="node_7#y">818.2425</Data>
+      <Data Name="node_0#height">36.414215</Data>
+      <Data Name="node_9#x">312.8783</Data>
+      <Data Name="node_9#y">1216.846</Data>
+      <Data Name="node_15#width">36.414185</Data>
+      <Data Name="node_2#name">node_2</Data>
+      <Data Name="node_5#height">82.80469</Data>
+      <Data Name="node_6#height">68.103516</Data>
+      <Data Name="node_7#height">53.402344</Data>
+      <Data Name="node_10#height">40.0</Data>
+      <Data Name="node_11#height">40.0</Data>
+      <Data Name="node_12#height">36.414185</Data>
+      <Data Name="node_13#height">40.0</Data>
+      <Data Name="node_14#height">53.402344</Data>
+      <Data Name="node_15#height">36.414185</Data>
+      <Data Name="node_12#width">36.414215</Data>
+      <Data Name="node_12#y">921.64484</Data>
+      <Data Name="node_7#width">102.0</Data>
+      <Data Name="node_14#x">347.77832</Data>
+      <Data Name="node_14#y">921.64484</Data>
+      <Data Name="node_8#height">53.402344</Data>
+      <Data Name="node_9#height">17.000069</Data>
+      <Data Name="node_10#x">97.04004</Data>
+      <Data Name="node_10#y">1018.34595</Data>
+      <Data Name="node_0#width">36.414185</Data>
+      <Data Name="node_12#x">209.9092</Data>
+      <Data Name="node_3#y">184.11542</Data>
+      <Data Name="node_5#x">310.44287</Data>
+      <Data Name="node_5#y">302.21893</Data>
+      <Data Name="node_7#x">209.90918</Data>
+      <Data Name="node_8#name">node_8</Data>
+      <Data Name="node_1#x">310.44287</Data>
+      <Data Name="node_1#y">413.62125</Data>
+      <Data Name="node_3#x">310.44287</Data>
+      <Data Name="transition_21#label">Kredi Kartı Talebi</Data>
+      <Data Name="node_1#name">node_1</Data>
+      <Data Name="node_3#width">102.697266</Data>
+      <Data Name="node_4#name">node_0</Data>
+      <Data Name="node_15#name">node_6</Data>
+      <Data Name="node_7#name">node_7</Data>
+      <Data Name="node_12#name">node_6</Data>
+      <Data Name="node_13#width">167.39648</Data>
+      <Data Name="node_6#width">102.0</Data>
+      <Data Name="node_10#width">149.39062</Data>
+      <Data Name="node_8#x">456.47656</Data>
+      <Data Name="node_8#y">714.84015</Data>
+      <Data Name="node_5#name">node_5</Data>
+      <Data Name="node_9#width">17.000006</Data>
+      <Data Name="transition_6#label">Yas Kontrolu</Data>
+      <Data Name="node_13#x">327.77832</Data>
+      <Data Name="node_13#y">1108.346</Data>
+      <Data Name="node_15#x">310.44287</Data>
+      <Data Name="node_15#y">501.82837</Data>
+      <Data Name="node_2#width">142.72266</Data>
+      <Data Name="node_11#x">97.04004</Data>
+      <Data Name="node_11#y">1108.346</Data>
+      <Data Name="node_4#x">398.70972</Data>
+      <Data Name="node_4#y">10.5</Data>
+      <Data Name="node_6#x">209.90918</Data>
+      <Data Name="node_5#width">102.697266</Data>
+      <Data Name="node_6#y">604.0872</Data>
+      <Data Name="node_0#x">398.70972</Data>
+      <Data Name="node_11#name">node_11</Data>
+      <Data Name="node_0#y">89.20711</Data>
+      <Data Name="node_2#x">209.90918</Data>
+      <Data Name="node_14#width">102.0</Data>
+      <Data Name="node_2#y">714.84015</Data>
+      <Data Name="node_10#name">node_10</Data>
+      <Data Name="node_11#width">194.08008</Data>
+      <Data Name="node_8#width">102.0</Data>
+      <Data Name="node_6#name">node_6</Data>
+      <Data Name="node_1#width">159.375</Data>
+      <Data Name="node_9#name">node_2</Data>
+      <Data Name="node_0#name">node_6</Data>
+      <Data Name="node_13#name">node_13</Data>
+      <Data Name="node_3#name">node_3</Data>
+    </ResourceSet>
+  </Resources>
+  <Properties>
+    <imports><![CDATA[import Model.KrediResponse;
+use krediResponse;
+use krediRequest;
+]]></imports>
+  </Properties>
+</Ruleflow></rfModel>
+</ilog.rules.studio.model.ruleflow:RuleFlow>

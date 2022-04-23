@@ -1,0 +1,19 @@
+
+property uuid "3957567a-53a1-4fc6-a654-bc93870fa44e"
+
+public class musteriSeviyesiDomain
+        property "com.ibm.rules.domainProvider.msexcel.b2xColumn" "1"
+        property "com.ibm.rules.domainProvider.msexcel.hasHeader" "true"
+        property "com.ibm.rules.domainProvider.msexcel.labelColumn.en" "2"
+        property "com.ibm.rules.domainProvider.msexcel.sheetIndex" "0"
+        property "com.ibm.rules.domainProvider.msexcel.valueColumn" "0"
+        property domainProviderResource "Yeni Microsoft Excel Çalışma Sayfası.xlsx"
+        property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
+{
+    domain {static PLATINIUM, static GOLD, static SILVER, static BRONZ}
+    public static final readonly musteriSeviyesiDomain BRONZ;
+    public static final readonly musteriSeviyesiDomain GOLD;
+    public static final readonly musteriSeviyesiDomain PLATINIUM;
+    public static final readonly musteriSeviyesiDomain SILVER;
+}
+

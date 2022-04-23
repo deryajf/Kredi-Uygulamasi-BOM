@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>vadeLimitRed</name>
+  <uuid>1b199763-ab76-4526-ba1f-bf16475efdad</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[if the musteri vade talebi of the musteri bilgileri of krediRequest is more than 60
+then make it false that krediResponse is kredi onaylandi mi ; 
+set the mesaj of krediResponse to "Vade Talebi 60'tan Fazla Olamaz!!!" ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.rules.studio.model.decisionservice:Operation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.rules.studio.model.decisionservice="http://com.ibm.rules.studio/model/decisionservice.ecore" xmlns:ilog.rules.studio.model.query.extractor="http://ilog.rules.studio/model/query/extractor.ecore" rulesetName="KrediServisi" usingRuleflow="true" ruleflowName="KrediAkisi" targetRuleProjectName="KrediApplicationBOM">
+  <name>KrediServisi</name>
+  <uuid>9bb9fe85-d248-4917-8006-0ab4db2a9f89</uuid>
+  <referencedVariables variableName="krediRequest" variableSetName="Parametreler">
+    <variableSet href="../rules/Parametreler.var#47899b2f-bf61-4839-8973-9e265f9260e6"/>
+  </referencedVariables>
+  <referencedVariables variableName="krediResponse" variableSetName="Parametreler" direction="OUT">
+    <variableSet href="../rules/Parametreler.var#47899b2f-bf61-4839-8973-9e265f9260e6"/>
+  </referencedVariables>
+  <ruleflow href="../rules/KrediAkisi.rfl#1f021632-f9a8-4151-8c20-6caeb5f77b30"/>
+  <extractor xsi:type="ilog.rules.studio.model.query.extractor:QueryExtractor" name="KrediServisi_extractor" validator="Default Validator"/>
+  <targetRuleProject href="../../KrediApplicationBOM#6b36b872-71f6-4086-ad32-bdfecca260ae"/>
+</com.ibm.rules.studio.model.decisionservice:Operation>

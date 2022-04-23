@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>Skor Onay Paketi</name>
+  <uuid>353f441e-7690-4891-aa19-9a22d4f20007</uuid>
+</ilog.rules.studio.model.base:RulePackage>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>musteriSeviyesiPaketi</name>
+  <uuid>399cdb45-c2ff-4300-bdce-c7d83510a8f6</uuid>
+</ilog.rules.studio.model.base:RulePackage>

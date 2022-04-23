@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:VariableSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>Parametreler</name>
+  <uuid>47899b2f-bf61-4839-8973-9e265f9260e6</uuid>
+  <variables name="krediKuralinaGirecekMi" type="java.lang.Boolean" initialValue="true" verbalization="krediKuralinaGirecekMi"/>
+  <variables name="toplamHarcamaTutari" type="java.lang.Integer" initialValue="0" verbalization="toplamHarcamaTutari"/>
+  <variables name="vadeKatsayisi" type="java.lang.Double" initialValue="1" verbalization="vadeKatsayisi"/>
+  <variables name="krediRequest" type="Model.KrediRequest" initialValue="" verbalization="krediRequest"/>
+  <variables name="krediResponse" type="Model.KrediResponse" initialValue="" verbalization="krediResponse"/>
+  <variables name="limitKatsayisi" type="java.lang.Double" initialValue="1" verbalization="limitKatsayisi"/>
+</ilog.rules.studio.model.base:VariableSet>
